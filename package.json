@@ -1,7 +1,7 @@
 {
-  "name": "lagerthashop",
+  "name": "Base",
   "version": "1.0.0",
-  "description": "Jewellery shop",
+  "description": "",
   "main": "dist/index",
   "scripts": {
     "start:dev": "node -r dotenv/config --inspect=0.0.0.0:9227 ./dist/",
