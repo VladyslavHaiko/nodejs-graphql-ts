@@ -1,12 +1,16 @@
 import * as http from 'http';
 
-import {app} from './app';
-import {config} from './config';
+import { app } from './app';
+import { config, sequelize } from './config';
 
 const server = http.createServer(app);
 
-server.listen(config.PORT, () => {
-  console.log('listen 5000');
+sequelize.sync().then(() => {
+  server.listen(config.PORT, () => {
+    console.log(`listen on ${config.PORT} port`);
+  });
+}).catch(error => {
+  console.log('Filed to start DB: ',error.parent.sqlMessage || error);
 });
 
 process.on('SIGTERM', () => {
